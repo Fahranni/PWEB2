@@ -81,6 +81,8 @@ $studentID1 = new student ("Yogi Gunawan", "67699090");//membuat objek baru dari
 echo "Nama : ". $studentID1->getName();//memanggil method dari kelas person untuk menampilkan nama
 echo "<br>";
 echo "ID Student :"." ". $studentID1->getstudentID();//memanggil method dari kelas student untuk menampilkan ID student
-
+```
+#### Output
+![output_2](/Dokumentasi/output_8.png)
 ?>
 ```
