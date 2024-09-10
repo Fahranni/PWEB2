@@ -1,4 +1,4 @@
-# PWEB2
+# Pemrograman Web II
 Repository ini dibuat untuk memenuhi tugas mata kuliah praktikum pemrograman web II.
 
 **Nama   : Amel Adellia Fahrani  
@@ -43,7 +43,30 @@ echo $Mahasiswa1->tampilkanData();
 ?>
 ```
 Membuat instansi objek dari kelas Mahasiswa dengan parameter yang diberikan (nama, nim, dan jurusan). Menampilkan data kelayar dengan echo
-![code_1](Dokumentasi/code_1.png)
+#### Skrip Program
+```php
+<?php 
+
+//Buat class Mahasiswa
+class Mahasiswa{//Mendeklarasikan Atribut class Mahasiswa yang bisa diakses diluar kelas
+ public $nama;
+ public $nim;
+ public $jurusan;
+
+ public function __construct($nama,$nim,$jurusan){//Menginisialisasi atribut kelas dan memberikan nilai
+  $this->nama = $nama;
+  $this->nim = $nim;
+  $this->jurusan = $jurusan;
+ }
+ public function tampilkanData(){//Metode tampilkanData
+  return "Nama: $this->nama <br> NIM: $this->nim <br> Jurusan: $this->jurusan";//Mengembalikan nilai
+ }
+}
+$Mahasiswa1 = new Mahasiswa ("Amel Adellia Fahrani" , "230102026" , "Komputer dan Bisnis");
+echo $Mahasiswa1->tampilkanData();//Memanggil metode tampildata() dari objek mahasiswa1 dan menampilkan hasilnya menggunakan echo
+?>
+```
+#### Output
 ![output_1](Dokumentasi/output_1.png)
 
 ### 1. Encapsulation
@@ -122,7 +145,70 @@ echo $Mahasiswa1->getNIM();
 echo $Mahasiswa1->getJurusan();
 ```
 Dengan kode diatas akan menampilkan nilai baru untuk atribut Nama, NIM dan Jurusan
-![output_1](Dokumentasi/code_2.png)
-![output_1](Dokumentasi/code_3.png)
+#### Skrip Program
+```php
+<?php
+//Buat class Mahasiswa
+class Mahasiswa//Deklarasi class Mahasiswa
+{
+  //Deklarasi atribut secacra privat yang artinya hanya dapat diakses didalam kelas
+  private $nama;
+  private $nim;
+  private $jurusan;
+
+  public function __construct($nama, $nim,$jurusan)//Menginisialisasi nilai atribut class
+  {
+    $this->nama = $nama;
+    $this->nim = $nim;
+    $this->jurusan = $jurusan;
+  }
+
+  public function getNama()//Metode getter digunakan untuk mengambil nilai dari atribut
+  {
+    return "Nama : $this->nama";
+  }
+  public function getNIM()
+  {
+    return "NIM : $this->nim";
+  }
+  public function getJurusan()
+  {
+    return "Jurusan : $this->jurusan";
+  }
+
+  public function setNama($nama)//Metode setter digunakan untuk mengubah nilai atribut
+  {
+    $this->nama = $nama;
+  }
+  public function setNIM($nim)
+  {
+    $this->nim = $nim;
+  }
+  public function setJurusan($jurusan)
+  {
+    $this->jurusan = $jurusan;
+  }
+}
+$Mahasiswa1 = new Mahasiswa("Amel Adellia Fahrani<br>", "230102026<br>" , "Komputer dan Bisnis<br>");
+//Memanggil metode untuk menampilkan nilai atribut 
+echo "Sebelum Setter";
+echo "<br>";
+echo $Mahasiswa1->getNama();
+echo $Mahasiswa1->getNIM();
+echo $Mahasiswa1->getJurusan();
+echo "<br>";
+
+$Mahasiswa1->setNama("Fahranni<br>");//Setter, mengubah nilai nama,nim dan jurusan
+$Mahasiswa1->setNIM("230102011<br>");
+$Mahasiswa1->setJurusan("Komunikasi");
+//Memanggil metode get untuk menampilkan nilai atribut setelah diubah
+echo "Setelah Setter";
+echo "<br>";
+echo $Mahasiswa1->getNama();
+echo $Mahasiswa1->getNIM();
+echo $Mahasiswa1->getJurusan();
+```
+#### Output
+
 
 
