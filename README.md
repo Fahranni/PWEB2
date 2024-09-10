@@ -303,7 +303,7 @@ class pengguna
   }
 }
 ```
-Mendeklarasikan class pengguna sebagai kelas induk dengan atribut nama dan metode aksesFitur(). Atribut nama hanya dapat diakses dalam kelas pengguna dan oleh kelas turunannya. aksesFitur() mengembalikan nilai dari atribut nama.
+Mendeklarasikan class pengguna sebagai kelas induk dengan atribut nama dan metode aksesFitur. Atribut nama hanya dapat diakses dalam kelas pengguna dan oleh kelas turunannya. aksesFitur mengembalikan nilai dari atribut nama.
 ```php
 class dosen extends pengguna//Kelas dosen mewarisi kelas pengguna
 {
@@ -323,6 +323,7 @@ class dosen extends pengguna//Kelas dosen mewarisi kelas pengguna
 ```
 Kelas dosen mewarisi atribut dan method dari kelas pengguna. 
 atribut matkul merupakan atribut tambahan di kelas dosen dan hanya bisa diakses oleh kelas dosen karena bersifat privat. metode aksesFitur() menggantikan menggantikan metode yang sama dikelas induk.
+
 ```php
 class  Mahasiswa extends pengguna
 {
@@ -534,7 +535,7 @@ echo $Mhs->aksesFitur();
 ?>
 ```
 ### Output
-
+![output_1](Dokumentasi/output_5.png)
 
 
 
