@@ -43,4 +43,4 @@ echo $Mahasiswa1->tampilkanData();
 ?>
 ```
 Membuat instansi objek dari kelas Mahasiswa dengan parameter yang diberikan (nama, nim, dan jurusan). Menampilkan data kelayar dengan echo
-
+![code_1](Dokumentasi/code_1.png)
