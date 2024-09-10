@@ -55,7 +55,7 @@ echo $Mahasiswa1->tampilkanData();//Memanggil metode tampildata() dari objek mah
 ?>
 ```
 #### Output
-![output_1](Dokumentasi/output_1.png)
+![output_1](/Dokumentasi/output_1.png)
 
 ### 2. Encapsulation
 Enkapsulasi adalah konsep untuk membantu dalam menyembunyikan dan membungkus detail internal dari objek dengan menggunakan atribut privat dan metode publik (getter dan setter).
@@ -198,7 +198,7 @@ echo $Mahasiswa1->getJurusan();
 ?>
 ```
 #### Output
-![output_1](Dokumentasi/output_2.png)
+![output_1](/Dokumentasi/output_2.png)
 ### 3. Inheritance
 Inhertance adalah konsep dasar dalam OOP dimana sebuah kelas mewariskan atribut/properti dan metode dari kelas lain. Kelas yang wewarisi disebut kelas anak(child class) sedangkan kelas yang diwarisi disebut kelas induk(superclass,parent class). Dengan Inheritance dapat menghindari perulangan kode. Kelas anak dapat menambah maupun mengubah perilaku dari kelas induk
 ```php
@@ -273,7 +273,7 @@ echo $Dsn1->getmatkul();//Memanggil metode get yang dipanggil dari kelas dosen d
 ?>
 ```
 ### Output Program
-![output_1](Dokumentasi/Output_3.png)
+![output_1](/Dokumentasi/Output_3.png)
 
 ### 4. Polymorphism
 Polymorphism merupakan konsep pada OOP yang memungkinkan suatu objek menggunakan metode yang sama namun memiliki implementasi yang berbeda berdasarkan tipe objek yang memanggilnya. Polymorphism dapat digunakan oleh objek meski daro kelas yang berbeda.
@@ -400,7 +400,7 @@ echo $Mhs->aksesFitur();
 ?>
 ```
 ### Output
-![output_1](Dokumentasi/output_4.png)
+![output_1](/Dokumentasi/output_4.png)
 ### 5. Abstraction
 Konsep pada OOP yang Menyembunyikan detail implementasi yang kompleks dan hanya menampilkan fungsi penting. Tujuan dari abstraction yaitu menyederhanakan kompleksitas suatu fungsi dengan cara hanya menampilkan aspek-aspek yang penting dan menyembunyikan detail implementasi yang tidak perlu.
 ```php
@@ -523,6 +523,6 @@ echo $Mhs->aksesFitur();
 ?>
 ```
 ### Output
-![output_1](Dokumentasi/output_5.png)
+![output_1](/Dokumentasi/output_5.png)
 
 
