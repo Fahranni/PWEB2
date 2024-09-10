@@ -411,6 +411,132 @@ echo $Mhs->aksesFitur();
 ?>
 ```
 ### Output
+![output_1](Dokumentasi/output_4.png)
+### 5. Abstraction
+Konsep pada OOP yang Menyembunyikan detail implementasi yang kompleks dan hanya menampilkan fungsi penting. Tujuan dari abstraction yaitu menyederhanakan kompleksitas suatu fungsi dengan cara hanya menampilkan aspek-aspek yang penting dan menyembunyikan detail implementasi yang tidak perlu.
+```php
+abstract class pengguna//Deklarasi class abstrac
+{
+  protected $nama;
+  public function __construct($nama)
+  {
+    $this->nama = $nama;
+  }
+ 
+```
+Deklarasi class abstract dengan nama  pengguna dengan atribut nama "proctected" artinya atribut bisa diakses oleh kelas itu sendiri dan turunannya.Constructor ini digunakan untuk menginisialisasi atribut $nama ketika objek dari kelas turunan dibuat.
+```php
+ abstract public function aksesFitur();
+``
+Method abstract ini dideklarasikan tanpa diimplementasikan dikelas induk, maksudnya kelas turunan wajib mengimplementasikan method ini sesuai dengan kebutuhan
+```php
+class dosen extends pengguna
+{
+  private $matkul;
+
+  public function __construct($nama, $matkul)
+  {
+    parent::__construct($nama);
+    $this->matkul = $matkul;
+  }
+  
+```
+Membuat kelas dosen sebagai turunan dari kelas abstract pengguna artinya kelas dosen mewarisi atribut dan method darai kelas abstract pengguna. Parent memanggil constructor dari kelas pengguna untuk menginisialisasi atribut nama, setelah itu matkul diinisialisasi untuk menyimpan nilai mata kuliah.
+```php
+ }
+  public function aksesFitur()
+  {
+    return "Nama : $this->nama Mata Kuliah : $this->matkul";
+  }
+}
+```
+Method aksesFitur() mengubah method abstract aksesFitur() dari kelas pengguna, dan implementasi dikelas dosen dengan menampilkan nama dosen dan matkul.
+```php
+class  Mahasiswa extends pengguna
+{
+  private $nim;
+
+  public function __construct($nama, $nim)
+  {
+    parent::__construct($nama);
+    $this->nim = $nim;
+  }
+  public function aksesFitur()
+  {
+    return "Nama: $this->nama NIM : $this->nim";
+  }
+}
+```
+Kelas mahasiswa mewarisi semua atribut dan method dari kelas pengguna. Atribut NIM bersifat privat artinya haya bisa diakses oleh kelas mahasiswa saja
+```php
+$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman<br>");
+```
+Dsn1 merupakan objek baru dari kelas dosen dengan nama "Ageng Wahyudi" dan matkul "Pemrograman"
+```php
+$Mhs = new mahasiswa("Amel Adellia Fahrani<br>", "230102026");
+```
+Mhs merupakan objek baru dari kelas mahasiswa dengan nama "Amel Adellia Fahrani" dan NIM "230102026"
+```php
+echo $Dsn1->aksesFitur();
+echo "<br>";
+echo $Mhs->aksesFitur();
+```
+Memanggil metode aksesFitur() untuk memanggil metode aksesFitur() pada objek Dsn1 dan Mhs
+### Skrip Program
+```php
+<?php
+abstract class pengguna//Deklarasi class abstract
+{
+  protected $nama;//atribut bisa diakses oleh turunannya
+  public function __construct($nama)
+  {
+    $this->nama = $nama;
+  }
+ abstract public function aksesFitur();//Metode abstract
+  
+}
+
+class dosen extends pengguna//Kelas dosen mawarisi kelas pengguna
+{
+  private $matkul;//Menambah atribut matkul
+
+  public function __construct($nama, $matkul)
+  {
+    parent::__construct($nama);//Menginisialisasi atribut nama
+    $this->matkul = $matkul;
+  }
+  public function aksesFitur()
+  {
+    return "Nama : $this->nama Mata Kuliah : $this->matkul";
+  }
+}
+
+class  Mahasiswa extends pengguna//Kelas mahasiswa mewarisi kelas pengguna
+{
+  private $nim;
+
+  public function __construct($nama, $nim)
+  {
+    parent::__construct($nama);//Menginisialisasi atribut nama
+    $this->nim = $nim;
+  }
+  public function aksesFitur()
+  {
+    return "Nama: $this->nama NIM : $this->nim";
+  }
+}
+
+$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman<br>");//objek dibuat dari kelas dosen
+$Mhs = new mahasiswa("Amel Adellia Fahrani<br>", "230102026");//objek dibuat dari kelas mahasiswa
+echo $Dsn1->aksesFitur();
+echo "<br>";
+echo $Mhs->aksesFitur();
+?>
+```
+### Output
+
+
+
 
 
 
