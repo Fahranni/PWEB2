@@ -122,6 +122,7 @@ echo $Mahasiswa1->getNIM();
 echo $Mahasiswa1->getJurusan();
 ```
 Dengan kode diatas akan menampilkan nilai baru untuk atribut Nama, NIM dan Jurusan
-
+![output_1](Dokumentasi/code_2.png)
+![output_1](Dokumentasi/code_3.png)
 
 
