@@ -1,5 +1,5 @@
 
-## Jobsheet 2 (Modul 3-4)
+## Jobsheet 2 (Modul 3-4) : Menggunakan Kelas dan Objek dalam PHP
 ### 1. Membuat class dan object
 ```php
 class Mahasiswa
@@ -9,6 +9,7 @@ class Mahasiswa
   public $jurusan;
 ```
 Deklarasikan kelas dengan nama Mahasiswa dengan atributnya yang bersifat publik berarti bisa diakses diluar kelas mahasiswa
+### 2. Implementasi Constructor
 ```php
 public function __construct($nama, $nim, $jurusan)
   { //Menginisialisasi atribut kelas dan memberikan nilai
@@ -26,6 +27,7 @@ public function tampilkanData()
   }
 ```
 Mengembalikan nilai dari kelas mahasiswa. Metode tampilData mengakses atribut nama,NIM, Jurusan dari objek tersebut.
+### 3. Membuat Metode Tambahan
 ```php
 public function updateJurusan($jurusan){
     $this->jurusan = $jurusan;
@@ -48,6 +50,7 @@ Membuat objek baru dengan nama Mahasiswa1 dari kelas Mahasiswa dengan nama "Fahr
 echo $Mahasiswa1->tampilkanData();
 ```
 Memanggil metode tampildata() dari objek mahasiswa1 dan menampilkan hasilnya menggunakan echo
+### 4. Penggunaan Atribut dan Metode
 ```php
 echo $Mahasiswa1->updateJurusan("Komunikasi<br>");
 ```
@@ -112,3 +115,69 @@ echo $Mahasiswa1->tampilkanData();//Menampilkan data
 ```
 #### Output
 ![output_2](/Dokumentasi/output_6.png)
+## Tugas
+### 1. Mengimplemtasikan kelas dengan atributnya
+```php
+class dosen{
+  //Deklarasi atribut
+  public $nama;
+  public $NIP;
+  public $matkul;
+
+```
+Deklarasi kelas dengan nama dosen dengan atributnya nama,NIP dan matkul yang bersifat publik, maka atribut bisa diakses diluar kelas dosen.
+```php
+public function __construct($nama,$NIP,$matkul){//Metode untuk class baru yang baru dibuat
+    $this->nama = $nama;
+    $this->NIP = $NIP;
+    $this->matkul = $matkul;
+  }
+```
+Metode construct adalah metode yang dijalankan untuk menyimpan nilai dari objek kedalam atribut
+### 2. Buat Metode untuk menampilkan informasi kelas
+```php
+public function tampilkanDosen(){//Metode yang digunakan untuk menampilkan informasi dosen
+    return "Nama : $this->nama <br> NIP : $this->NIP <br> Mata Kuliah : $this->matkul";//Mengembalikan nilai
+  }
+```
+Mengambil nilai atribut nama,NIP,matkul dan menggabungkannya menjadi deskripsi lengkap
+
+```php
+$Dosen1 = new dosen ("Farida Angelin", "1908798765", "Sastra");
+```
+### 3. Buat Objekk dari kelas dosen
+Membuat objek baru dengan nama Dosen1 dari kelas dosen dengan nama "Farida Angelin" yang memiliki NIP "1908798765" dan mengajar mata kuliah "Sastra".
+### 4. Gunakan metode untuk menampilkan informasi class
+```php
+echo $Dosen1->tampilkanDosen();
+```
+Menampilkan informasi dosen
+#### Skrip Program
+```php
+<?php 
+class dosen{//Deklarasi class
+  //Deklarasi atribut
+  public $nama;
+  public $NIP;
+  public $matkul;
+
+  public function __construct($nama,$NIP,$matkul){//Metode untuk class baru yang baru dibuat
+    $this->nama = $nama;
+    $this->NIP = $NIP;
+    $this->matkul = $matkul;
+  }
+
+  public function tampilkanDosen(){//Metode yang digunakan untuk menampilkan informasi dosen
+    return "Nama : $this->nama <br> NIP : $this->NIP <br> Mata Kuliah : $this->matkul";//Mengembalikan nilai
+  }
+}
+
+$Dosen1 = new dosen ("Farida Angelin", "1908798765", "Sastra");//Membuat objek baru
+echo $Dosen1->tampilkanDosen();//Menampilkan informasi dosen
+
+
+?>
+```
+#### Output
+![output_2](/Dokumentasi/output_7.png)
+
