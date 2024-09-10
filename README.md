@@ -69,7 +69,7 @@ echo $Mahasiswa1->tampilkanData();//Memanggil metode tampildata() dari objek mah
 #### Output
 ![output_1](Dokumentasi/output_1.png)
 
-### 1. Encapsulation
+### 2. Encapsulation
 Enkapsulasi adalah konsep untuk membantu dalam menyembunyikan dan membungkus detail internal dari objek dengan menggunakan atribut privat dan metode publik (getter dan setter).
 
 _Getter_ adalah metode yang digunakan untuk mengambil nilai dari atribut privat   
@@ -207,8 +207,91 @@ echo "<br>";
 echo $Mahasiswa1->getNama();
 echo $Mahasiswa1->getNIM();
 echo $Mahasiswa1->getJurusan();
+?>
 ```
 #### Output
+![output_1](Dokumentasi/output_2.png)
+### 3. Inheritance
+Inhertance adalah konsep dasar dalam OOP dimana sebuah kelas mewariskan atribut/properti dan metode dari kelas lain. Kelas yang wewarisi disebut kelas anak(child class) sedangkan kelas yang diwarisi disebut kelas induk(superclass,parent class). Dengan Inheritance dapat menghindari perulangan kode. Kelas anak dapat menambah maupun mengubah perilaku dari kelas induk
+```php
+class pengguna
+  protected $nama;
+  public function __construct($nama)
+  {
+    $this->nama = $nama;
+  }
+  public function getNama()
+  {
+    return "Nama : $this->nama";
+  }
+}
+```
+Deklarasi kelas pengguna sebagai kelas induk dan berfungsi sebagai template dasar.
+Atribut distel protected artinya haya bisa diakses oleh kelas itu dan kelas turunannya.
+Method Construct digunakan untuk menginisialisasikan atribut nama, Getter digunakan untuk mengembalikan nilai dari atribut nama
+```php
+class dosen extends pengguna
+{
+  private $matkul;
+
+  public function __construct($nama, $matkul)
+  {
+    parent::__construct($nama);
+    $this->matkul = $matkul;
+  }
+```
+Class dosen adalah kelas turunan dari class pengguna,bererti class dosen mewarrisi semua atribut dan metode class pengguna.
+Menambahkan atribut matkul yang distel privat artinya hanya dapat diakses oleh kelas dosen. Method constructor menerima dua parameter yaitu $nama dan $matkul, artinya memanggil $nama dari kelas induk dan menambah $matkul untuk objek dosen.
+```php
+$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman");
+echo $Dsn1->getNama();
+echo $Dsn1->getmatkul()
+```
+Membuat objek baru  dengan nama Dsn1 dari kelas dosen. GetNama() memanggil method dari objek $dosen1 yang diwarisi dari kelas pengguna maka akan mengebalikan "Nama : Ageng Wahyudi", dan untuk getmatkul() mengembalikan nilai "Mata Kuliah : Pemrograman"
+### Skrip Program
+```php
+<?php
+class pengguna//Mendeklarasikan class pengguna sebagai class induk
+{
+  protected $nama;//deklarasi atribut yang haya bisa diakses oleh kelas itu sendiri dan kelas yang mewarisinya
+  public function __construct($nama)//  Menginisialisasikan atribut
+  {
+    $this->nama = $nama;
+  }
+  public function getNama()//Mengembalikan nilai dari atribut 
+  {
+    return "Nama : $this->nama";
+  }
+}
+
+class dosen extends pengguna//Deklarasi class dosen yang mewarisi kelas pengguna
+{
+  private $matkul;//Menambah atribut matkul
+
+  public function __construct($nama, $matkul)
+  {
+    parent::__construct($nama);//Memanggil contruct dari class pengguna 
+    $this->matkul = $matkul;//inisialisasi atribut
+  }
+  public function getmatkul()//Mengembalikan nilai darai atribut matkul yang digunakan untuk mengakses matkul
+  {
+    return "Mata Kuliah : $this->matkul";
+  }
+}
+
+$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman");//Membuat objek dari class dosen dan memberikan nilai
+echo $Dsn1->getNama();//Menampilkan Nama dengan Memanggil metode get dari kelas induk
+echo $Dsn1->getmatkul();//Memanggil metode get yang dipanggil dari kelas dosen dan menampilkan nilainya
+?>
+```
+### Output Program
+
+
+
+
+
+
+
 
 
 
