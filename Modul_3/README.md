@@ -204,4 +204,124 @@ echo "Nama :". $student1->getName();
 ```
 #### Output
 ![output_2](/Dokumentasi/output_9.png)
+### 3. Encapsulation (Enkapsilasi)
+Enkapsulasi adalah menyembunyikn detail internal dari sebuah objek dan hanya membiarkan interaksi melalui metode publik yang tersedia, hal ini guna menjaga data tetap aman.
+```php
+class Student
+{
+  //Atribut kelas 
+  private $nama;
+  private $studentID;
+
+  public function __construct($nama, $studentID)
+  {
+    $this->nama = $nama;
+    $this->studentID = $studentID;
+  }
+```
+Membuat kelas dengan nama student dan menginisialisasi dengan atribut nama dan studentID yang sudah diset secara privat artinya hanya dapat diakses oleh kelas tersebut.
+```php
+ public function getNama()
+  {
+    return $this->nama;
+  }
+  public function getStudentID()
+  {
+    return $this->studentID;
+  }
+```
+Metode geter untuk mengambil nilai dari atribut nama dan studentID
+```php
+public function setNama($nama)
+  {
+    $this->nama = $nama;
+  }
+  public function setStudentID($studentID)
+  {
+    $this->studentID = $studentID;
+  }
+```
+Metode setter untuk mengubah nilai dari atribut nama dan studentID
+```php
+$student1 = new student("Fanya Asabil", "09090918");
+```
+Menciptakan objek baru dengan nilai atribut nama "Fanya Asabil" dan ID Student "09090918"
+```php
+echo"Nama :"." ". $student1->getNama();
+echo "<br>";
+echo "ID Student : ". " ".$student1->getstudentID();
+```
+Mengambil nilai dari atribut nama dan studentID untuk ditampilkan
+```php
+$student1->setNama("Fanya Zaskia"); 
+$student1->setStudentID("24527183");
+```
+Mengubah nilai nama dan StudentID
+```php
+echo "Nama : ". " ".$student1->getNama();
+echo "<br>";
+echo "ID Student: ". " ".$student1->getstudentID();
+```
+Mengambil nilai dan menampilkan nama serta studentID setelah diiubah
+#### Kode Program
+```php
+<?php
+class Student//uat kelas dengan nama student
+{
+  //Atribut kelas 
+  private $nama;
+  private $studentID;
+
+  public function __construct($nama, $studentID)//menginisialisasi atribut
+  {
+    $this->nama = $nama;
+    $this->studentID = $studentID;
+  }
+  public function getNama()//mengambil nilai dari atribut privat nama
+  {
+    return $this->nama;
+  }
+  public function getStudentID()//mengambil nilai dari atribut privat studentID
+  {
+    return $this->studentID;
+  }
+  public function setNama($nama)//Metode mengubah nilai atribut nama
+  {
+    $this->nama = $nama;
+  }
+  public function setStudentID($studentID)//mengubah nilai atribut studentID
+  {
+    $this->studentID = $studentID;
+  }
+}
+$student1 = new student("Fanya Asabil", "09090918");//Menciptakan objek dadi kelas student
+//Memanggil metode untuk menampilkan nilai atribut 
+echo "Sebelum Setter";
+echo "<br>";
+echo"Nama :"." ". $student1->getNama();//mengambil nilai atribut nama
+echo "<br>";
+echo "ID Student : ". " ".$student1->getstudentID();//mengambil nilai atribut studentID
+
+echo "<br>";
+echo "<br>";
+
+$student1->setNama("Fanya Zaskia"); //Setter, mengubah nilai nama
+$student1->setStudentID("24527183");
+
+//Memanggil metode get untuk menampilkan nilai atribut setelah diubah
+echo "Setelah Setter";
+echo "<br>";
+//Mengambil nilai
+echo "Nama : ". " ".$student1->getNama();
+echo "<br>";
+echo "ID Student: ". " ".$student1->getstudentID();
+?>
+```
+#### Output
+![output_2](/Dokumentasi/output_10.png)
+
+
+
+
+
 
