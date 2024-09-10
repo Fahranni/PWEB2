@@ -319,6 +319,117 @@ echo "ID Student: ". " ".$student1->getstudentID();
 ```
 #### Output
 ![output_2](/Dokumentasi/output_10.png)
+### 4. Abstraction
+Proses menyembunyikan detail implemntasi internal dan hanya menampilkan fungsionalitas utama.
+```php
+bstract class Course 
+{
+  abstract public function getCourseDetails();
+
+}
+
+```
+Membuat kelas abstrak dengan nama Course dan metodenya getCourseDetail().
+```php
+class onlineCourse extends course 
+{
+  private $nama; 
+  private $modul;
+
+  public function __construct($nama, $modul)
+  {
+    
+    $this->nama= $nama;
+    $this->modul = $modul;
+  }
+  public function getCourseDetails()
+  {
+    return "Nama : $this->nama Modul : $this->modul";
+  }
+}
+```
+Membuat kelas turunan dari Course dengan nama getCourseDetail dan atributnya nama dan modul
+```php
+class  OfflineCourse extends Course 
+{
+  private $nama;
+  private $matkul;
+
+  public function __construct($nama, $matkul)
+  {
+    //Menginisialisasi atribut nama
+    $this->nama = $nama;
+    $this->matkul = $matkul;
+  }
+  public function getCourseDetails()
+  {
+    return "Nama: $this->nama Matkul: $this->matkul";
+  }
+}
+```
+Membuat Kelas turunan dari corse dengan namOfflineCourse dan atributnya serta dengan metodenya
+```php
+$online = new onlineCourse("Ageng Wahyudi <br>", "Pemrograman<br>"); 
+$offline = new offlineCourse("Amel Adellia Fahrani<br>", "Bahasa Inggris");
+```
+Membuat objek dari kedua kelas tersebut
+```php
+echo $online->getCourseDetails();
+echo $offline->getCourseDetails();
+```
+Memanggil metode dan menampilkan nilanya
+#### Kode Program
+```php
+<?php
+abstract class Course //Deklarasi class abstract
+{
+  abstract public function getCourseDetails(); //Metode abstract
+
+}
+
+class onlineCourse extends course //Kelas dosen mawarisi kelas pengguna
+{
+  private $nama; //Menambah atribut matkul
+  private $modul;
+
+  public function __construct($nama, $modul)
+  {
+    //Menginisialisasi atribut nama
+    $this->nama= $nama;
+    $this->modul = $modul;
+  }
+  public function getCourseDetails()
+  {
+    return "Nama : $this->nama Modul : $this->modul";
+  }
+}
+
+class  OfflineCourse extends Course //Kelas mahasiswa mewarisi kelas pengguna
+{
+  private $nama;
+  private $matkul;
+
+  public function __construct($nama, $matkul)
+  {
+    //Menginisialisasi atribut nama
+    $this->nama = $nama;
+    $this->matkul = $matkul;
+  }
+  public function getCourseDetails()
+  {
+    return "Nama: $this->nama Matkul: $this->matkul";
+  }
+}
+
+$online = new onlineCourse("Ageng Wahyudi <br>", "Pemrograman<br>"); //objek dibuat dari kelas dosen
+$offline = new offlineCourse("Amel Adellia Fahrani<br>", "Bahasa Inggris"); //objek dibuat dari kelas mahasiswa
+echo $online->getCourseDetails();
+echo "<br>";
+echo $offline->getCourseDetails();
+?>
+```
+#### Output
+![output_2](/Dokumentasi/output_11.png)
 
 
 
