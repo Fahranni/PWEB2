@@ -12,6 +12,6 @@ Object Oriented Programming (OOP) adalah Paradigma pemrograman yang berfokus pad
 - Polymorphism
 - Abstraction
 ## Daftar Isi
-- [Modul 1](Modul_1)
-- [Modul 2](Modul_2)
-- [Modul 3](Modul_3)
+- [Modul 1 (Jobsheet 1)](Modul_1)
+- [Modul 2 (Jobsheet 2)](Modul_2)
+- [Modul 3 (Jobsheet 3)](Modul_3)
