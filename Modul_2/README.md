@@ -111,3 +111,4 @@ $Mahasiswa1->setNIM("230102011");//Mengubah nilai nim
 echo $Mahasiswa1->tampilkanData();//Menampilkan data
 ```
 #### Output
+![output_2](/Dokumentasi/output_6.png)
