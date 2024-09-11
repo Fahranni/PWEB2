@@ -204,11 +204,6 @@ class Student
   private $nama;
   private $studentID;
 
-  public function __construct($nama, $studentID)
-  {
-    $this->nama = $nama;
-    $this->studentID = $studentID;
-  }
 ```
 Membuat kelas dengan nama student dan menginisialisasi dengan atribut nama dan studentID yang sudah diset secara privat artinya hanya dapat diakses oleh kelas tersebut.
 ```php
@@ -221,7 +216,7 @@ Membuat kelas dengan nama student dan menginisialisasi dengan atribut nama dan s
     return $this->studentID;
   }
 ```
-Metode geter untuk mengambil nilai dari atribut nama dan studentID
+Metode getter untuk mengambil nilai dari atribut nama dan studentID
 ```php
 public function setNama($nama)
   {
@@ -234,9 +229,14 @@ public function setNama($nama)
 ```
 Metode setter untuk mengubah nilai dari atribut nama dan studentID
 ```php
-$student1 = new student("Fanya Asabil", "09090918");
+$student1 = new student();
 ```
-Menciptakan objek baru dengan nilai atribut nama "Fanya Asabil" dan ID Student "09090918"
+Menciptakan objek baru dari kelas student
+```php
+$student1->setNama("Fanya Asabil");
+$student1->setStudentID("09090918");
+```
+Memberikan nilai pada atribut nama dan ID student
 ```php
 echo"Nama :"." ". $student1->getNama();
 echo "<br>";
@@ -263,11 +263,7 @@ class Student//uat kelas dengan nama student
   private $nama;
   private $studentID;
 
-  public function __construct($nama, $studentID)//menginisialisasi atribut
-  {
-    $this->nama = $nama;
-    $this->studentID = $studentID;
-  }
+ 
   public function getNama()//mengambil nilai dari atribut privat nama
   {
     return $this->nama;
@@ -285,7 +281,9 @@ class Student//uat kelas dengan nama student
     $this->studentID = $studentID;
   }
 }
-$student1 = new student("Fanya Asabil", "09090918");//Menciptakan objek dadi kelas student
+$student1 = new student();//Menciptakan objek dadi kelas student
+$student1->setNama("Fanya Asabil");//Memberikan nilai pada atribut
+$student1->setStudentID("09090918");
 //Memanggil metode untuk menampilkan nilai atribut 
 echo "Sebelum Setter";
 echo "<br>";
@@ -305,8 +303,7 @@ echo "<br>";
 //Mengambil nilai
 echo "Nama : ". " ".$student1->getNama();
 echo "<br>";
-echo "ID Student: ". " ".$student1->getstudentID();
-?>
+echo "ID : ". " ".$student1->getstudentID();
 ```
 #### Output
 ![output_2](/Dokumentasi/output_10.png)
@@ -320,38 +317,26 @@ bstract class Course
 }
 
 ```
-Membuat kelas abstrak dengan nama Course dan metodenya getCourseDetail().
+Membuat kelas abstrak dengan nama Course dan metodenya getCourseDetail(.
 ```php
 class onlineCourse extends course 
 {
-  private $nama; 
-  private $modul;
+  public $nama; 
+  public $modul;
 
-  public function __construct($nama, $modul)
-  {
-    
-    $this->nama= $nama;
-    $this->modul = $modul;
-  }
   public function getCourseDetails()
   {
     return "Nama : $this->nama Modul : $this->modul";
   }
 }
 ```
-Membuat kelas turunan dari Course dengan nama getCourseDetail dan atributnya nama dan modul
+Membuat kelas turunan dari Course dengan nama onlineCourse dan atributnya nama dan modul y
 ```php
 class  OfflineCourse extends Course 
 {
   private $nama;
   private $matkul;
 
-  public function __construct($nama, $matkul)
-  {
-    //Menginisialisasi atribut nama
-    $this->nama = $nama;
-    $this->matkul = $matkul;
-  }
   public function getCourseDetails()
   {
     return "Nama: $this->nama Matkul: $this->matkul";
@@ -360,9 +345,16 @@ class  OfflineCourse extends Course
 ```
 Membuat Kelas turunan dari corse dengan namOfflineCourse dan atributnya serta dengan metodenya
 ```php
-$online = new onlineCourse("Ageng Wahyudi <br>", "Pemrograman<br>"); 
-$offline = new offlineCourse("Amel Adellia Fahrani<br>", "Bahasa Inggris");
+$online = new onlineCourse();
+$offline = new offlineCourse();
 ```
+```php
+$online->nama ="Ageng Wahyudi";
+$online->modul="Pemrograman";
+$offline->nama="Amel Adellia Fahrani";
+$offline->matkul="Bahasa Inggris";
+```
+Memberikan nilai untuk setiap atribut di kedua kelas
 Membuat objek dari kedua kelas tersebut
 ```php
 echo $online->getCourseDetails();
@@ -380,44 +372,38 @@ abstract class Course //Deklarasi class abstract
 
 class onlineCourse extends course //Kelas dosen mawarisi kelas pengguna
 {
-  private $nama; //Menambah atribut matkul
-  private $modul;
+  public $nama; //Menambah atribut matkul
+  public $modul;
 
-  public function __construct($nama, $modul)
-  {
-    //Menginisialisasi atribut nama
-    $this->nama= $nama;
-    $this->modul = $modul;
-  }
+  
   public function getCourseDetails()
   {
-    return "Nama : $this->nama Modul : $this->modul";
+    return "Nama : $this->nama <br> Modul : $this->modul";
   }
 }
 
 class  OfflineCourse extends Course //Kelas mahasiswa mewarisi kelas pengguna
 {
-  private $nama;
-  private $matkul;
+  public $nama;
+  public $matkul;
 
-  public function __construct($nama, $matkul)
-  {
-    //Menginisialisasi atribut nama
-    $this->nama = $nama;
-    $this->matkul = $matkul;
-  }
   public function getCourseDetails()
   {
-    return "Nama: $this->nama Matkul: $this->matkul";
+    return "Nama: $this->nama <br> Matkul: $this->matkul";
   }
 }
 
-$online = new onlineCourse("Ageng Wahyudi <br>", "Pemrograman<br>"); //objek dibuat dari kelas dosen
-$offline = new offlineCourse("Amel Adellia Fahrani<br>", "Bahasa Inggris"); //objek dibuat dari kelas mahasiswa
-echo $online->getCourseDetails();
-echo "<br>";
-echo $offline->getCourseDetails();
-?>
+$online = new onlineCourse(); //membuat objek baru
+$online->nama ="Ageng Wahyudi";//Memberikan nilai atribut
+$online->modul="Pemrograman";
+echo $online->getCourseDetails();//Memanggil metode dan menampilkan
+
+$offline = new offlineCourse(); //Membuat objek baru
+$offline->nama="Amel Adellia Fahrani";//Memberikan nilai atribut
+$offline->matkul="Bahasa Inggris";
+echo "<br>". "<br>";
+echo $offline->getCourseDetails();//Memanggil metode dan menampilkan
+
 ```
 #### Output
 ![output_2](/Dokumentasi/output_11.png)
@@ -559,8 +545,8 @@ $JurnalMahasiswa1 = new JurnalMahasiswa ("Teknologi informasi");
 ```
 Membuat objek baru JurnalMahasiswa1 dari kelas JurnalMahasiswa dan mengisi nilainya.
 ```php
-echo "Nama Dosen : " . $Dosen1->getName(). "<br>"."NIDN :".$Dosen1->getNIDN(). "<br>". "Pengajuan Judul Jurnal :".$JurnalDosen1->getPengajuan();
-echo "Nama Mahasiswa : " . $Mahasiswa1->getName() . "<br>" . "NIM :" . $Mahasiswa1->getNIM() . "<br>" . "Pengajuan Judul Jurnal :" . $JurnalMahasiswa1->getPengajuan();
+echo "Nama Dosen : " . $Dosen1->getName(). "<br>"."NIDN :".$Dosen1->getNIDN(). "<br>". "Diajukan oleh dosen dengan judul :".$JurnalDosen1->getPengajuan();
+echo "Nama Mahasiswa : " . $Mahasiswa1->getName() . "<br>" . "NIM :" . $Mahasiswa1->getNIM() . "<br>" . "Diajukan oleh mahasiswa dengan judul :" . $JurnalMahasiswa1->getPengajuan();
 ```
 Menampilkan nilai dari atribut dengann memanggil metodenya
 #### Kode Program
@@ -661,21 +647,15 @@ $Dosen1 = new Dosen("Tatang Agus", "179072534143");
 $Mahasiswa1 = new Mahasiswa("Feby Putri", "256175272");
 $JurnalDosen1 = new JurnalDosen("Pemrograman");
 $JurnalMahasiswa1 = new JurnalMahasiswa ("Teknologi informasi");
-echo "Nama Dosen : " ." ". $Dosen1->getName(). "<br>"."NIDN :". " ".$Dosen1->getNIDN(). "<br>"."Role: ". " ".$Dosen1->getrole()."<br>"."Pengajuan Judul Jurnal :". " ".$JurnalDosen1->getPengajuan();
+echo "Nama Dosen : " ." ". $Dosen1->getName(). "<br>"."NIDN :". " ".$Dosen1->getNIDN(). "<br>"."Role: ". " ".$Dosen1->getrole()."<br>"."Diajukan oleh dosen dengan judul :". " ".$JurnalDosen1->getPengajuan();
 echo "<br>";
 echo "<br>";
-echo "Nama Mahasiswa : " ." ". $Mahasiswa1->getName() . "<br>" . "NIM :" ." ". $Mahasiswa1->getNIM() . "<br>" . "Role : ". " ". $Mahasiswa1->getrole()."<br>"."Pengajuan Judul Jurnal :" . $JurnalMahasiswa1->getPengajuan();
+echo "Nama Mahasiswa : " ." ". $Mahasiswa1->getName() . "<br>" . "NIM :" ." ". $Mahasiswa1->getNIM() . "<br>" . "Role : ". " ". $Mahasiswa1->getrole()."<br>"."Diajukan oleh mahasiswa dengan judul :" . $JurnalMahasiswa1->getPengajuan();
 ?>
 
 ```
 #### Output
-![output_2](/Dokumentasi/output_13.png)
-
-
-
-
-
-
+![output_2](/Dokumentasi/output13.png)
 
 
 
