@@ -3,61 +3,53 @@
 Konsep Dimana sebuah kelas mewarisi atribut dan metode dari kelas lain.
 ```php
 class person
-{ //Membuat kelas dengan nama person 
-  protected $nama; 
-  public function __construct($nama)
-  {
-    $this->nama = $nama;
-  }
+{ 
+  Public $nama; 
+ 
 ```
-Code diatas adalah membuat kelas person sebagai kelas induk dengan atribut nama. Atribut nama bersifat "protected" artinya hanya bisa diakses oleh kelas peson dan kelas turunannya.
+Code diatas adalah membuat kelas person sebagai kelas induk dengan atribut nama.
 ```php
-public function getName()//mengambil nilai nama
+public function getName()
   {
     return $this->nama;
   }
 ```
-Metode khusus yang dijalankan saat objek dari sebuah kelas dibuat. Atribut akan diisi dengan nilai yang diberikan ketika objek diciptakan.
+Metode untuk mengambil nilai nama 
 ```php
 class student extends person
 {
   private $studentID;
 ```
-Membuat kelas turunan dari kelas person dengan nama student dengan StudentID sebagai atribut. Atribut bersifat "privat" maka hanya bisa diakses oleh kelas student.
+Membuat kelas turunan dari kelas person dengan nama student dengan StudentID sebagai atribut. Atribut bersifat publik maka bisa diakses diluar kelas student.
+
 ```php
- public function __construct($nama, $studentID)//Menyimpan nilai dari dua parameter
-  {
-    parent::__construct($nama);
-    $this->studentID = $studentID;
-  }
-```
-Dengan metode ini memberikan nilai awal pada atribut.
-```php
-public function getstudentID()//mengembalikan nilai atribut
+public function getstudentID()
   {
     return $this->studentID;
   }
 ```
 Mengembalikan nilai dari atribut nama
 ```php
-$studentID1 = new student ("Yogi Gunawan", "67699090");
+$student = new student ();
 ```
-Membuat objek baru dari kelas student dan mengisi nilainya
+Membuat objek baru dari kelas student
 ```php
-echo "Nama : ". $studentID1->getName();
-echo "ID Student :"." ". $studentID1->getstudentID();
+$student->nama = "Yogi Gunawan";
+echo "Nama : " . $student->getName();
 ```
-Memanggil method dari kelas person dan student untuk menampilkan nilai yang sudah disimpan.
+Memberi nilai nama serta Memanggil method untuk menampilkan nilai yang sudah disimpan.
+```php
+$student->studentID = "136673";
+echo "ID Student : ". $student->getStudentID();
+```
+Memberi nilai ID student serta Memanggil method untuk menampilkan nilai yang sudah disimpan.
 #### Kode Program
 ```php
 <?php
 class person
 { //Membuat kelas dengan nama person 
-  protected $nama; //nama sebagai atribut kelas yang bisa diakses oleh kelas itu sendiri dan turunannya
-  public function __construct($nama)//method otomatis saat objek dibuat
-  {
-    $this->nama = $nama;
-  }
+  public $nama; //nama sebagai atribut kelas yang bisa diakses oleh kelas itu sendiri dan turunannya
+  
   public function getName()//mengambil nilai nama
   {
     return $this->nama;
@@ -65,26 +57,25 @@ class person
 }
 class student extends person//membuat kelas turunan dari kelas person
 {
-  private $studentID;//Menambah atribut 
+  public $studentID;//Menambah atribut 
 
-  public function __construct($nama, $studentID)//Menyimpan nilai dari dua parameter
-  {
-    parent::__construct($nama);
-    $this->studentID = $studentID;
-  }
+
   public function getstudentID()//mengembalikan nilai atribut
   {
     return $this->studentID;
   }
 }
-$studentID1 = new student ("Yogi Gunawan", "67699090");//membuat objek baru dari atribut student
-echo "Nama : ". $studentID1->getName();//memanggil method dari kelas person untuk menampilkan nama
+$student = new student (); //membuat objek baru dari kelas student
+$student->nama = "Yogi Gunawan";//Mengatur nilai nama
+echo "Nama : " . $student->getName();//Menampilkan
 echo "<br>";
-echo "ID Student :"." ". $studentID1->getstudentID();//memanggil method dari kelas student untuk menampilkan ID student
+$student->studentID = "136673";
+echo "ID Student : ". $student->getStudentID();
+
 ?>
 ```
 #### Output
-![output_2](/Dokumentasi/output_8.png)
+![output_2](/Dokumentasi/output8.png)
 ### 1. Polymorphism (Polimorfisme)
 Polymorphism memungkinkan satu metoden memiliki banyak bentuk.
 ```php
