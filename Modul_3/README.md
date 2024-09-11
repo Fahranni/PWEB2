@@ -670,11 +670,12 @@ $Dosen1 = new Dosen("Tatang Agus", "179072534143");
 $Mahasiswa1 = new Mahasiswa("Feby Putri", "256175272");
 $JurnalDosen1 = new JurnalDosen("Pemrograman");
 $JurnalMahasiswa1 = new JurnalMahasiswa ("Teknologi informasi");
-echo "Nama Dosen : " . $Dosen1->getName(). "<br>"."NIDN :".$Dosen1->getNIDN(). "<br>". "Pengajuan Judul Jurnal :".$JurnalDosen1->getPengajuan();
+echo "Nama Dosen : " ." ". $Dosen1->getName(). "<br>"."NIDN :". " ".$Dosen1->getNIDN(). "<br>"."Role: ". " ".$Dosen1->getrole()."<br>"."Pengajuan Judul Jurnal :". " ".$JurnalDosen1->getPengajuan();
 echo "<br>";
 echo "<br>";
-echo "Nama Mahasiswa : " . $Mahasiswa1->getName() . "<br>" . "NIM :" . $Mahasiswa1->getNIM() . "<br>" . "Pengajuan Judul Jurnal :" . $JurnalMahasiswa1->getPengajuan();
+echo "Nama Mahasiswa : " ." ". $Mahasiswa1->getName() . "<br>" . "NIM :" ." ". $Mahasiswa1->getNIM() . "<br>" . "Role : ". " ". $Mahasiswa1->getrole()."<br>"."Pengajuan Judul Jurnal :" . $JurnalMahasiswa1->getPengajuan();
 ?>
+
 ```
 #### Output
 ![output_2](/Dokumentasi/output_12.png)
