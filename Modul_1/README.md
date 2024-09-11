@@ -74,15 +74,6 @@ class Mahasiswa//Deklarasi class Mahasiswa
 ```
 Deklarasi kelas dengan nama mahasiswa beserta atributnya yaitu nama,nim dan jurusan secara privat artinya atribut haya dapat diakses oleh kelas itu saja.
 ```php
-public function __construct($nama, $nim,$jurusan)
-  {
-    $this->nama = $nama;
-    $this->nim = $nim;
-    $this->jurusan = $jurusan;
-  }
-```
-Memanggil method construct(menginisialisasi) atribut nama, nim, dan jurusan ketika objek baru dari kelas mahasiswa dibuat.
-```php
 public function getNama()
   {
     return "Nama : $this->nama";
@@ -114,9 +105,15 @@ Method yang digunakan untuk mengambil nilai dari atribut privat, maka kode diata
 ```
 Method setter digunakan untuk mengubah nilai dari atribut.
 ```php
-$Mahasiswa1 = new Mahasiswa("Amel Adellia Fahrani<br>", "230102026<br>" , "Komputer dan Bisnis<br>");
+$Mahasiswa1 = new Mahasiswa();
 ```
-Mahasiswa1 adalah objek baru dari kelas mahasiswa dengan nilai awal untuk atribut nama,nim,kelas.
+Mahasiswa1 adalah objek baru dari kelas mahasiswa
+```php
+$Mahasiswa1->setNama("Amel Adellia Fahrani<br>"); 
+$Mahasiswa1->setNIM("230102026<br>");
+$Mahasiswa1->setJurusan("Komputer<br>");
+```
+Mengubah nilai atribut dengan set
 ```php
 echo $Mahasiswa1->getNama();
 echo $Mahasiswa1->getNIM();
@@ -138,7 +135,13 @@ echo $Mahasiswa1->getJurusan();
 Dengan kode diatas akan menampilkan nilai baru untuk atribut Nama, NIM dan Jurusan
 #### Kode Program
 ```php
-<?php
+ <?php
+
+/**
+ * Nama   : Amel Adellia Fahrani
+ * Kelas  : TI-2B
+ * NPM    : 230102026
+ */
 //Buat class Mahasiswa
 class Mahasiswa//Deklarasi class Mahasiswa
 {
@@ -146,13 +149,6 @@ class Mahasiswa//Deklarasi class Mahasiswa
   private $nama;
   private $nim;
   private $jurusan;
-
-  public function __construct($nama, $nim,$jurusan)//Menginisialisasi nilai atribut class
-  {
-    $this->nama = $nama;
-    $this->nim = $nim;
-    $this->jurusan = $jurusan;
-  }
 
   public function getNama()//Metode getter digunakan untuk mengambil nilai dari atribut
   {
@@ -180,15 +176,17 @@ class Mahasiswa//Deklarasi class Mahasiswa
     $this->jurusan = $jurusan;
   }
 }
-$Mahasiswa1 = new Mahasiswa("Amel Adellia Fahrani<br>", "230102026<br>" , "Komputer dan Bisnis<br>");
+$Mahasiswa1 = new Mahasiswa();
 //Memanggil metode untuk menampilkan nilai atribut 
 echo "Sebelum Setter";
 echo "<br>";
+$Mahasiswa1->setNama("Amel Adellia Fahrani<br>"); //Setter, mengubah nilai nama,nim dan jurusan
+$Mahasiswa1->setNIM("230102026<br>");
+$Mahasiswa1->setJurusan("Komputer<br>");
 echo $Mahasiswa1->getNama();
 echo $Mahasiswa1->getNIM();
 echo $Mahasiswa1->getJurusan();
 echo "<br>";
-
 $Mahasiswa1->setNama("Fahranni<br>");//Setter, mengubah nilai nama,nim dan jurusan
 $Mahasiswa1->setNIM("230102011<br>");
 $Mahasiswa1->setJurusan("Komunikasi");
@@ -198,10 +196,9 @@ echo "<br>";
 echo $Mahasiswa1->getNama();
 echo $Mahasiswa1->getNIM();
 echo $Mahasiswa1->getJurusan();
-?>
 ```
 #### Output
-![output_1](/Dokumentasi/output_2.png)
+![output_1](/Dokumentasi/output2.png)
 ### 3. Inheritance
 Inhertance adalah konsep dasar dalam OOP dimana sebuah kelas mewariskan atribut/properti dan metode dari kelas lain. Kelas yang wewarisi disebut kelas anak(child class) sedangkan kelas yang diwarisi disebut kelas induk(superclass,parent class). Dengan Inheritance dapat menghindari perulangan kode. Kelas anak dapat menambah maupun mengubah perilaku dari kelas induk
 ```php
