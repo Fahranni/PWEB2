@@ -67,7 +67,7 @@ Mengubah nilai NIM dari 23034567 menjadi 230102011
 echo $Mahasiswa1->tampilkanData();//Menampilkan data
 ```
 Menampilkan data setelah diubah
-#### Skrip Program
+#### Kode Program
 ```php
 <?php
 
@@ -152,7 +152,7 @@ Membuat objek baru dengan nama Dosen1 dari kelas dosen dengan nama "Farida Angel
 echo $Dosen1->tampilkanDosen();
 ```
 Menampilkan informasi dosen
-#### Skrip Program
+#### Kode Program
 ```php
 <?php 
 class dosen{//Deklarasi class
