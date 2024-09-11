@@ -430,6 +430,257 @@ echo $offline->getCourseDetails();
 ```
 #### Output
 ![output_2](/Dokumentasi/output_11.png)
+## Tugas
+### 1. Implementasikan kelas Person sebagai induk dari Dosen dan Mahasiswa.
+```php
+class person
+{ //Membuat kelas dengan nama person 
+  protected $nama; //nama sebagai atribut kelas
+  public function __construct($nama)
+  {
+    $this->nama = $nama;
+  }
+  public function getName()
+  {
+    return $this->nama;
+  }
+  public function getrole(){
+    return "belum diketahui";
+  }
+}
+```
+Membuat kelas person sebagai kelas induk dengan atribut nama yang bersifat protected artinya bisa diakses kelas person dan kelas turunannya.
+Dosen dan Mahasiswa memiliki atribut dan metode yang sesuai dengan perannya.
+### 2. Gunakan konsep Inheritance untuk membuat hierarki kelas yang memungkinkan
+```php
+class Dosen extends person
+{
+  private $NIDN;
+
+  public function __construct($nama, $NIDN)
+  {
+    parent::__construct($nama);
+    $this->NIDN = $NIDN;
+  }
+  public function getNIDN()
+  {
+    return $this->NIDN;
+  }
+```
+Membuat kelas dosen sebagai turunan dari kelas person dan menambah atribut NIDN 
+```php
+class Mahasiswa extends person//Membuat kelas Mahasiswa yang turunan dari kelas person
+{
+  private $NIM;//Menambah atribuut NIM untuk kelas mahasiswa
+
+  public function __construct($nama, $NIM)
+  {
+    parent::__construct($nama);
+    $this->NIM = $NIM;
+  }
+  public function getNIM()
+  {
+    return $this->NIM;
+  }
+```
+Membuat kelas Mahasiswa sebagai turunan dari kelas person dan menambah atribut NIM yang bersifat privat artinya hanya bisa diakses oleh kela itu sendiri.
+### 3. Terapkan Polymorphism dengan membuat metode getRole() di kelas Person danoverride metode ini di kelas Dosen dan Mahasiswa untuk menampilkan peran yang berbeda.
+```php
+ public function getrole(){
+    return "Dosen";
+  }
+```
+Mengatur role dosen sebagai dosen
+```php
+ public function getrole(){
+    return "Mahasiswa";
+  }
+```
+Mengatur role mahasiswa sebagai mahasiswa
+### 4. Gunakan Encapsulation untuk melindungi atribut nidn di kelas Dosen dan nim dikelas Mahasiswa.
+```php
+class Dosen extends person
+{
+  private $NIDN;
+```
+NIDN bersifat privat artinya hanya dapat diakses oleh kelas dossen
+```php
+class Mahasiswa extends person
+{
+  private $NIM;
+```
+NIM bersifat privat, artinya hanya dapat diakses oleh kelas mahasiswa
+### 5. Buat kelas abstrak Jurnal dan implementasikan konsep Abstraction dengan membuat kelas turunan JurnalDosen dan JurnalMahasiswa yang masing-masing memiliki cara tersendiri untuk mengelola pengajuan jurnal.
+```php
+abstract class Jurnal
+{
+  protected $judul; 
+  public function __construct($judul)
+  {
+    $this->judul = $judul;
+  }
+  abstract public function getPengajuan();
+}
+```
+Buat kelas abstrak Jurnal dengan atribut Judul yang bersifat protected dan metodenya getPengajuan
+```php
+class JurnalDosen extends Jurnal 
+{
+  public function __construct($judul)
+  {
+    parent::__construct($judul);
+  }
+  public function getPengajuan()
+  {
+    return $this->judul;
+  }
+}
+```
+Membuat kelas JurnalDosen yang mewarisi atribut dan metode dari kelas Jurnal
+```php
+class JurnalMahasiswa extends Jurnal 
+{
+  public function __construct($judul)
+  {
+    parent::__construct($judul); 
+  }
+  public function getPengajuan()
+  {
+    return $this->judul;
+  }
+}
+```
+Membuat kelas JurnalMahasiswa yang mewarisi atribut dan metode dari kelas Jurnal
+```php
+$Dosen1 = new Dosen("Tatang Agus", "179072534143");
+```
+Membuat objek baru Dosen1 dari kelas dosen dan mengisi nilainya.
+```php
+$Mahasiswa1 = new Mahasiswa("Feby Putri", "256175272");
+```
+Membuat objek baru Mahasiswa1 dari kelas Mahasiswa dan mengisi nilainya.
+```php
+$JurnalDosen1 = new JurnalDosen("Pemrograman");
+```
+Membuat objek baru JurnalDosen1 dari kelas JurnalDosen dan mengisi nilainya.
+```php
+$JurnalMahasiswa1 = new JurnalMahasiswa ("Teknologi informasi");
+```
+Membuat objek baru JurnalMahasiswa1 dari kelas JurnalMahasiswa dan mengisi nilainya.
+```php
+echo "Nama Dosen : " . $Dosen1->getName(). "<br>"."NIDN :".$Dosen1->getNIDN(). "<br>". "Pengajuan Judul Jurnal :".$JurnalDosen1->getPengajuan();
+echo "Nama Mahasiswa : " . $Mahasiswa1->getName() . "<br>" . "NIM :" . $Mahasiswa1->getNIM() . "<br>" . "Pengajuan Judul Jurnal :" . $JurnalMahasiswa1->getPengajuan();
+```
+Menampilkan nilai dari atribut dengann memanggil metodenya
+#### Kode Program
+```php
+<?php
+class person
+{ //Membuat kelas dengan nama person 
+  protected $nama; //nama sebagai atribut kelas
+  public function __construct($nama)//Inisialisasi
+  {
+    $this->nama = $nama;
+  }
+  public function getName()//mengambil nilai daro atribut nama
+  {
+    return $this->nama;
+  }
+  public function getrole(){//menampilkan peran yang berbeda
+    return "belum diketahui";
+  }
+}
+
+class Dosen extends person//Membuat kelas Dosen yang merupakan turunan dari kelas person
+{
+  private $NIDN;//menambah atribut NIDN
+
+  public function __construct($nama, $NIDN)//Inisialisasi
+  {
+    parent::__construct($nama);
+    $this->NIDN = $NIDN;
+  }
+  public function getNIDN()//Mengambil nilai NIDN
+  {
+    return $this->NIDN;
+  }
+  public function getrole(){//mengatur peran dosen sebagai dosen
+    return "Dosen";
+  }
+}
+
+class Mahasiswa extends person//Membuat kelas Mahasiswa yang turunan dari kelas person
+{
+  private $NIM;//Menambah atribuut NIM untuk kelas mahasiswa
+
+  public function __construct($nama, $NIM)
+  {
+    parent::__construct($nama);
+    $this->NIM = $NIM;
+  }
+  public function getNIM()
+  {
+    return $this->NIM;
+  }
+  public function getrole(){//mengatur peran mahasiswa sebagai mahasiswa
+    return "Mahasiswa";
+  }
+}
+abstract class Jurnal //Deklarasi class abstract
+{
+  protected $judul; //atribut bisa diakses oleh turunannya
+  public function __construct($judul)
+  {
+    $this->judul = $judul;
+  }
+  abstract public function getPengajuan(); //Metode abstract
+
+}
+
+class JurnalDosen extends Jurnal //Kelas JurnalDosen mawarisi kelas Jurnal
+{
+
+
+  public function __construct($judul)
+  {
+    parent::__construct($judul); //Menginisialisasi atribut judul
+    
+  }
+  public function getPengajuan()//Metode
+  {
+    return $this->judul;
+  }
+}
+class JurnalMahasiswa extends Jurnal //Kelas JurnalMahasiswa mawarisi kelas Jurnal
+{
+
+
+  public function __construct($judul)
+  {
+    parent::__construct($judul); //Menginisialisasi atribut judul
+
+  }
+  public function getPengajuan()
+  {
+    return $this->judul;
+  }
+}
+//Membuat Objek baru
+$Dosen1 = new Dosen("Tatang Agus", "179072534143");
+$Mahasiswa1 = new Mahasiswa("Feby Putri", "256175272");
+$JurnalDosen1 = new JurnalDosen("Pemrograman");
+$JurnalMahasiswa1 = new JurnalMahasiswa ("Teknologi informasi");
+echo "Nama Dosen : " . $Dosen1->getName(). "<br>"."NIDN :".$Dosen1->getNIDN(). "<br>". "Pengajuan Judul Jurnal :".$JurnalDosen1->getPengajuan();
+echo "<br>";
+echo "<br>";
+echo "Nama Mahasiswa : " . $Mahasiswa1->getName() . "<br>" . "NIM :" . $Mahasiswa1->getNIM() . "<br>" . "Pengajuan Judul Jurnal :" . $JurnalMahasiswa1->getPengajuan();
+?>
+```
+#### Output
+![output_2](/Dokumentasi/output_12.png)
+
+
+
 
 
 
