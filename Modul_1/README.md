@@ -274,35 +274,25 @@ echo "Mata Kuliah :".$Dsn1->getmatkul();//Memanggil metode get yang dipanggil da
 ?>
 ```
 ### Output
-![output_1](/Dokumentasi/Output3.png)
+![output_1](/Dokumentasi/output3.png)
 
 ### 4. Polymorphism
 Polymorphism merupakan konsep pada OOP yang memungkinkan suatu objek menggunakan metode yang sama namun memiliki implementasi yang berbeda berdasarkan tipe objek yang memanggilnya. Polymorphism dapat digunakan oleh objek meski daro kelas yang berbeda.
 ```php
 class pengguna
 {
-  protected $nama;
-  public function __construct($nama)
-  {
-    $this->nama = $nama;
-  }
+  public $nama;
   public function aksesFitur()
   {
     return $this->nama;
   }
 }
 ```
-Mendeklarasikan class pengguna sebagai kelas induk dengan atribut nama dan metode aksesFitur. Atribut nama hanya dapat diakses dalam kelas pengguna dan oleh kelas turunannya. aksesFitur mengembalikan nilai dari atribut nama.
+Mendeklarasikan class pengguna sebagai kelas induk dengan atribut nama dan metode aksesFitur. aksesFitur mengembalikan nilai dari atribut nama.
 ```php
-class dosen extends pengguna//Kelas dosen mewarisi kelas pengguna
+class dosen extends pengguna
 {
-  private $matkul;
-
-  public function __construct($nama, $matkul)
-  {
-    parent::__construct($nama);
-    $this->matkul = $matkul;
-  }
+  public $matkul;
   public function aksesFitur()
   {
     return "Nama : $this->nama Mata Kuliah : $this->matkul";
@@ -311,18 +301,12 @@ class dosen extends pengguna//Kelas dosen mewarisi kelas pengguna
 }
 ```
 Kelas dosen mewarisi atribut dan method dari kelas pengguna. 
-atribut matkul merupakan atribut tambahan di kelas dosen dan hanya bisa diakses oleh kelas dosen karena bersifat privat. metode aksesFitur() menggantikan menggantikan metode yang sama dikelas induk.
+atribut matkul merupakan atribut tambahan di kelas dosen. metode aksesFitur() menggantikan metode yang sama dikelas induk.
 
 ```php
 class  Mahasiswa extends pengguna
 {
-  private $nim;
-
-  public function __construct($nama, $nim)
-  {
-    parent::__construct($nama);
-    $this->nim = $nim;
-  }
+  public $nim;
   public function aksesFitur()
   {
     return "Nama: $this->nama NIM : $this->nim";
@@ -330,31 +314,33 @@ class  Mahasiswa extends pengguna
 }
 ```
 kelas mahasiswa mewarisi atribut dan method dari kelas pengguna. 
-atribut nim merupakan atribut tambahan di kelas mahasiswa dan hanya bisa diakses oleh kelas mahasiswa karena bersifat privat. metode aksesFitur() menggantikan menggantikan metode yang sama dikelas induk.
+atribut nim merupakan atribut tambahan di kelas mahasiswa. metode aksesFitur() menggantikan menggantikan metode yang sama dikelas induk.
 ``php
-$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman<br>");
+$Dsn1 = new dosen();
 ```
-Membuat objek baru bernama Dsn1 dari kelas dosen dengan nama dosen "Ageng Wahyudi" dan mata kuliah "Pemrograman"
+Membuat objek baru bernama Dsn1 dari kelas dosen
 ```php
-$Mhs = new mahasiswa ("Amel Adellia Fahrani<br>", "230102026");
-```
-Membuat objek baru bernama Mhs dari kelas mahasiswa dengan nama mahasiswa "Amel Adellia Fahrani" dan NIM "230102026"
-```PHP
+$Dsn1->nama = "Ageng" ."<br>";
+$Dsn1->matkul= "Sastra Inggris";
 echo $Dsn1->aksesFitur();
-echo "<br>";
+```
+Mengatur nilai atribut nama dan matkul pada objek serta menampilkan informasi objek
+```PHP
+$Mhs = new Mahasiswa();
+```
+Membuat objek baru bernama Mhs dari kelas Mahasiswa
+```php
+$Mhs->nama="Royyan Riski". "<br>";
+$Mhs->nim="23090987";
 echo $Mhs->aksesFitur();
 ```
-Memanggil metode aksesFitur() pada objek Dsn1 dan Mhs.
+Mengatur nilai atribut nama dan nim serta memanggil metode aksesFitur() untuk menampilkan objek Mhs
 ### Kode Program
 ```php
 <?php
 class pengguna//Deklarasi class
 {
-  protected $nama;
-  public function __construct($nama)
-  {
-    $this->nama = $nama;
-  }
+  public $nama;
   public function aksesFitur()
   {
     return $this->nama;//Mengembalikan nilai
@@ -363,13 +349,7 @@ class pengguna//Deklarasi class
 
 class dosen extends pengguna//Kelas dosen mewarisi kelas pengguna
 {
-  private $matkul;//Menambah atribut baru matkul
-
-  public function __construct($nama, $matkul)
-  {
-    parent::__construct($nama);
-    $this->matkul = $matkul;
-  }
+  public $matkul;//Menambah atribut baru matkul
   public function aksesFitur()
   {
     return "Nama : $this->nama Mata Kuliah : $this->matkul";
@@ -377,31 +357,30 @@ class dosen extends pengguna//Kelas dosen mewarisi kelas pengguna
   }
 }
 
-class  Mahasiswa extends pengguna
+class  Mahasiswa extends pengguna//Buat kelas mahasiswa yang merupakan turunan dari kelas pengguna
 {
-  private $nim;
-
-  public function __construct($nama, $nim)
-  {
-    parent::__construct($nama);//Mengakses constructor kelas pengguna
-    $this->nim = $nim;
-  }
-  public function aksesFitur()
+  public $nim;//menambah atribut
+  public function aksesFitur()//mengembalikan nilai
   {
     return "Nama: $this->nama NIM : $this->nim";
   }
 }
 
-$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman<br>");//objek Dsn1 dibuat dari kelas dosen
-$Mhs = new mahasiswa ("Amel Adellia Fahrani<br>", "230102026");//objek Mhs dibuat darai kelas mahasiswa
-//Memanggil medode akses fitur
-echo $Dsn1->aksesFitur();
-echo "<br>";
-echo $Mhs->aksesFitur();
-?>
+$Dsn1 = new dosen();//buat objek Dsn1 dibuat dari kelas dosen
+//Mengatur nilai atribut
+$Dsn1->nama = "Ageng" ."<br>";
+$Dsn1->matkul= "Sastra Inggris";
+echo $Dsn1->aksesFitur();//menampilkan informasi objek
+echo "<br>"."<br>";
+
+$Mhs = new Mahasiswa();//buat objek baru dari kelas Mahasiswa
+//Mengatur nilai atribut
+$Mhs->nama="Royyan Riski". "<br>";
+$Mhs->nim="23090987";
+echo $Mhs->aksesFitur();//Menampilkan informasi objek
 ```
 ### Output
-![output_1](/Dokumentasi/output_4.png)
+![output_1](/Dokumentasi/output4.png)
 ### 5. Abstraction
 Konsep pada OOP yang Menyembunyikan detail implementasi yang kompleks dan hanya menampilkan fungsi penting. Tujuan dari abstraction yaitu menyederhanakan kompleksitas suatu fungsi dengan cara hanya menampilkan aspek-aspek yang penting dan menyembunyikan detail implementasi yang tidak perlu.
 ```php
