@@ -203,11 +203,8 @@ echo $Mahasiswa1->getJurusan();
 Inhertance adalah konsep dasar dalam OOP dimana sebuah kelas mewariskan atribut/properti dan metode dari kelas lain. Kelas yang wewarisi disebut kelas anak(child class) sedangkan kelas yang diwarisi disebut kelas induk(superclass,parent class). Dengan Inheritance dapat menghindari perulangan kode. Kelas anak dapat menambah maupun mengubah perilaku dari kelas induk
 ```php
 class pengguna
-  protected $nama;
-  public function __construct($nama)
-  {
-    $this->nama = $nama;
-  }
+  public $nama;
+
   public function getNama()
   {
     return "Nama : $this->nama";
@@ -215,65 +212,69 @@ class pengguna
 }
 ```
 Deklarasi kelas pengguna sebagai kelas induk dan berfungsi sebagai template dasar.
-Atribut distel protected artinya haya bisa diakses oleh kelas itu dan kelas turunannya.
-Method Construct digunakan untuk menginisialisasikan atribut nama, Getter digunakan untuk mengembalikan nilai dari atribut nama
+Atribut distel prublic artinya haya bisa diakses diluar kelas
 ```php
 class dosen extends pengguna
 {
-  private $matkul;
+  public $matkul;
 
-  public function __construct($nama, $matkul)
+  public function getmatkul()
   {
-    parent::__construct($nama);
-    $this->matkul = $matkul;
+    return  $this->matkul;
   }
+}
+
 ```
-Class dosen adalah kelas turunan dari class pengguna,bererti class dosen mewarrisi semua atribut dan metode class pengguna.
-Menambahkan atribut matkul yang distel privat artinya hanya dapat diakses oleh kelas dosen. Method constructor menerima dua parameter yaitu $nama dan $matkul, artinya memanggil $nama dari kelas induk dan menambah $matkul untuk objek dosen.
+Class dosen adalah kelas turunan dari class pengguna,bererti class dosen mewarisi semua atribut dan metode class pengguna.
+Menambahkan atribut matkul yang distel public artinya dapat diakses diluar kelas dosen. 
 ```php
-$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman");
-echo $Dsn1->getNama();
-echo $Dsn1->getmatkul()
+$Dsn1 = new dosen();
 ```
-Membuat objek baru  dengan nama Dsn1 dari kelas dosen. GetNama() memanggil method dari objek $dosen1 yang diwarisi dari kelas pengguna maka akan mengebalikan "Nama : Ageng Wahyudi", dan untuk getmatkul() mengembalikan nilai "Mata Kuliah : Pemrograman"
+Membuat objek baru dengan nama Dsn1 dari kelas dosen
+```php
+$Dsn1->nama = "Fajar Enggar Maulana";
+$Dsn1->matkul ="Matematika Diskrit";
+```
+Memberikan nilai untuk atribut nama dan matkul
+```php
+echo "Nama Dosen :". $Dsn1->getNama();
+echo "<br>";
+echo "Mata Kuliah :".$Dsn1->getmatkul();
+```
 ### Kode Program
 ```php
 <?php
 class pengguna//Mendeklarasikan class pengguna sebagai class induk
 {
-  protected $nama;//deklarasi atribut yang haya bisa diakses oleh kelas itu sendiri dan kelas yang mewarisinya
-  public function __construct($nama)//  Menginisialisasikan atribut
-  {
-    $this->nama = $nama;
-  }
+  public $nama;//deklarasi atribut yang haya bisa diakses oleh kelas itu sendiri dan kelas yang mewarisinya
+  
   public function getNama()//Mengembalikan nilai dari atribut 
   {
-    return "Nama : $this->nama";
+    return $this->nama;
   }
 }
 
 class dosen extends pengguna//Deklarasi class dosen yang mewarisi kelas pengguna
 {
-  private $matkul;//Menambah atribut matkul
+  public $matkul;//Menambah atribut matkul
 
-  public function __construct($nama, $matkul)
-  {
-    parent::__construct($nama);//Memanggil contruct dari class pengguna 
-    $this->matkul = $matkul;//inisialisasi atribut
-  }
+ 
   public function getmatkul()//Mengembalikan nilai darai atribut matkul yang digunakan untuk mengakses matkul
   {
-    return "Mata Kuliah : $this->matkul";
+    return  $this->matkul;
   }
 }
 
-$Dsn1 = new dosen("Ageng Wahyudi <br>", "Pemrograman");//Membuat objek dari class dosen dan memberikan nilai
-echo $Dsn1->getNama();//Menampilkan Nama dengan Memanggil metode get dari kelas induk
-echo $Dsn1->getmatkul();//Memanggil metode get yang dipanggil dari kelas dosen dan menampilkan nilainya
+$Dsn1 = new dosen();//Membuat objek dari class dosen dan memberikan nilai
+$Dsn1->nama = "Fajar Enggar Maulana";//Mengisi nilai atribut
+$Dsn1->matkul ="Matematika Diskrit";
+echo "Nama Dosen :". $Dsn1->getNama();//Menampilkan Nama dengan Memanggil metode get dari kelas induk
+echo "<br>";
+echo "Mata Kuliah :".$Dsn1->getmatkul();//Memanggil metode get yang dipanggil dari kelas dosen dan menampilkan nilainya
 ?>
 ```
 ### Output
-![output_1](/Dokumentasi/Output_3.png)
+![output_1](/Dokumentasi/Output3.png)
 
 ### 4. Polymorphism
 Polymorphism merupakan konsep pada OOP yang memungkinkan suatu objek menggunakan metode yang sama namun memiliki implementasi yang berbeda berdasarkan tipe objek yang memanggilnya. Polymorphism dapat digunakan oleh objek meski daro kelas yang berbeda.
