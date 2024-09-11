@@ -678,7 +678,7 @@ echo "Nama Mahasiswa : " ." ". $Mahasiswa1->getName() . "<br>" . "NIM :" ." ". $
 
 ```
 #### Output
-![output_2](/Dokumentasi/output_12.png)
+![output_2](/Dokumentasi/output_13.png)
 
 
 
