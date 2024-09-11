@@ -76,8 +76,9 @@ echo "ID Student : ". $student->getStudentID();
 ```
 #### Output
 ![output_2](/Dokumentasi/output8.png)
-### 1. Polymorphism (Polimorfisme)
-Polymorphism memungkinkan satu metoden memiliki banyak bentuk.
+### 2. Polymorphism (Polimorfisme)
+Polymorphism memungkinkan satu metoden memiliki banyak bentuk. Dengan ini, objek dapat
+diperlakukan sebagai bentuk umum dan khusus sesuai kebutuhan.
 ```php
 class person
 {
@@ -107,7 +108,7 @@ class Teacher extends person
   }
   public function getName()
   {
-    return $this->nama;
+   return "Nama : ".$this->nama."<br>"."Teacher ID :".$this->teacherID;
   }
 }
 ```
@@ -124,11 +125,11 @@ class student extends person//Membuat kelas turunan
   }
   public function getName()
   {
-    return $this->nama;
+   return "Nama :".$this->nama."<br>"."ID student : ". $this->studentID;
   }
 }
 ```
-Membuat kelas student yang juga kelas turunan dari kelas person, dalam kela strudent ditambah atribut studentID yang bersifat prifat artinya hanya bisa diakses kelas itu saja.
+Membuat kelas student yang juga kelas turunan dari kelas person, dalam kela strudent ditambah atribut studentID yang bersifat privat artinya hanya bisa diakses kelas itu saja.
 ```php
 $teacher1 = new Teacher("Fadilah Tri Hastuty ", "0092"); //objek teacher1 dibuat dari kelas teacher
 $student1 = new student("Faisal Damar", "11239"); //objek student1 dibuat dari kelas student
@@ -162,11 +163,11 @@ class Teacher extends person//Membuat kelas turunan
   public function __construct($nama, $teacherID)//Menerima dua patameter
   {
     parent::__construct($nama);
-    $this->$teacherID = $teacherID;
+    $this->teacherID = $teacherID;
   }
   public function getName()//Mengembalikan nilai
   {
-    return $this->nama;
+    return "Nama : ".$this->nama."<br>"."Teacher ID :".$this->teacherID;
   }
 }
 class student extends person//Membuat kelas turunan
@@ -176,25 +177,24 @@ class student extends person//Membuat kelas turunan
   public function __construct($nama, $studentID)
   {
     parent::__construct($nama);
-    $this->$studentID = $studentID;
+    $this->studentID = $studentID;
   }
   public function getName()
   {
-    return $this->nama;
+    return "Nama :".$this->nama."<br>"."ID student : ". $this->studentID;
   }
 }
 
 $teacher1 = new Teacher("Fadilah Tri Hastuty ", "0092"); //objek teacher1 dibuat dari kelas teacher
 $student1 = new student("Faisal Damar", "11239"); //objek student1 dibuat dari kelas student
 //Memanggil metode 
-echo "Nama :". $teacher1->getName();//mengembalikan nilai atribut dan menampilkan
-echo "<br>";
-echo "Nama :". $student1->getName();
-
+echo $teacher1->getName();//memanggil metode dan menampilkan 
+echo "<br>"."<br>";
+echo $student1->getName();
  ?>
 ```
 #### Output
-![output_2](/Dokumentasi/output_9.png)
+![output_2](/Dokumentasi/output9.png)
 ### 3. Encapsulation (Enkapsilasi)
 Enkapsulasi adalah menyembunyikn detail internal dari sebuah objek dan hanya membiarkan interaksi melalui metode publik yang tersedia, hal ini guna menjaga data tetap aman.
 ```php
