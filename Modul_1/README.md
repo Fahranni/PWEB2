@@ -8,14 +8,6 @@ class Mahasiswa{
  public $jurusan;
 ```
 Mendeklarasikan kelas dengan nama Mahasiswa dengan atributnya nama,nim dan jurusan yang bisa diakses secara publik artinya bisa diakses diluar kelas.
-```php
-public function __construct($nama,$nim,$jurusan)
-  $this->nama = $nama;
-  $this->nim = $nim;
-  $this->jurusan = $jurusan;
- }
-```
- Metode ini digunakan untuk menginisialisasi atribut kelas dengan nilai yang diberikan saat objek diciptakan.
 
 ```php
 public function tampilkanData(){
@@ -26,36 +18,47 @@ public function tampilkanData(){
 Method untuk menampilkan class. Metode publik untuk mengembalikan nilai string informasi mengenai mahasiswa dan menggabungkan nilai atribut nama, nim, dan Jurusan.
 
 ```php
-$Mahasiswa1 = new Mahasiswa ("Amel Adellia Fahrani" , "230102026" , "Komputer dan Bisnis");
-echo $Mahasiswa1->tampilkanData();
-?>
+$Mahasiswa1 = new Mahasiswa();
 ```
-Membuat instansi objek dari kelas Mahasiswa dengan parameter yang diberikan (nama, nim, dan jurusan). Menampilkan data kelayar dengan echo
+Membuat instansi objek dari kelas Mahasiswa
+```php
+$Mahasiswa1->nama = "AmelAdellia Fahrani";
+$Mahasiswa1->nim = "230102026";
+$Mahasiswa1->jurusan="Komputer dan Bisnis";
+```
+Mengatur nilai atribut yang ada dalam kelas
+```php
+echo $Mahasiswa1->tampilkanData();
+```
+Memanggil metode guna menampilkan objek
 #### Kode Program
 ```php
 <?php 
-
+/**
+ * Nama   : Amel Adellia Fahrani
+ * Kelas  : TI-2B
+ * NPM    : 230102026
+ */
 //Buat class Mahasiswa
 class Mahasiswa{//Mendeklarasikan Atribut class Mahasiswa yang bisa diakses diluar kelas
  public $nama;
  public $nim;
  public $jurusan;
 
- public function __construct($nama,$nim,$jurusan){//Menginisialisasi atribut kelas dan memberikan nilai
-  $this->nama = $nama;
-  $this->nim = $nim;
-  $this->jurusan = $jurusan;
- }
  public function tampilkanData(){//Metode tampilkanData
   return "Nama: $this->nama <br> NIM: $this->nim <br> Jurusan: $this->jurusan";//Mengembalikan nilai
  }
 }
-$Mahasiswa1 = new Mahasiswa ("Amel Adellia Fahrani" , "230102026" , "Komputer dan Bisnis");
+$Mahasiswa1 = new Mahasiswa();//intansiasi objek
+//Mengatur nilai atribut
+$Mahasiswa1->nama = "AmelAdellia Fahrani";
+$Mahasiswa1->nim = "230102026";
+$Mahasiswa1->jurusan="Komputer dan Bisnis";
 echo $Mahasiswa1->tampilkanData();//Memanggil metode tampildata() dari objek mahasiswa1 dan menampilkan hasilnya menggunakan echo
 ?>
 ```
 #### Output
-![output_1](/Dokumentasi/output_1.png)
+![output_1](/Dokumentasi/output1.png)
 
 ### 2. Encapsulation
 Enkapsulasi adalah konsep untuk membantu dalam menyembunyikan dan membungkus detail internal dari objek dengan menggunakan atribut privat dan metode publik (getter dan setter).
