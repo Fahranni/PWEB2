@@ -31,7 +31,7 @@ echo $Mahasiswa1->tampilkanData();
 ?>
 ```
 Membuat instansi objek dari kelas Mahasiswa dengan parameter yang diberikan (nama, nim, dan jurusan). Menampilkan data kelayar dengan echo
-#### Skrip Program
+#### Kode Program
 ```php
 <?php 
 
@@ -133,7 +133,7 @@ echo $Mahasiswa1->getNIM();
 echo $Mahasiswa1->getJurusan();
 ```
 Dengan kode diatas akan menampilkan nilai baru untuk atribut Nama, NIM dan Jurusan
-#### Skrip Program
+#### Kode Program
 ```php
 <?php
 //Buat class Mahasiswa
@@ -236,7 +236,7 @@ echo $Dsn1->getNama();
 echo $Dsn1->getmatkul()
 ```
 Membuat objek baru  dengan nama Dsn1 dari kelas dosen. GetNama() memanggil method dari objek $dosen1 yang diwarisi dari kelas pengguna maka akan mengebalikan "Nama : Ageng Wahyudi", dan untuk getmatkul() mengembalikan nilai "Mata Kuliah : Pemrograman"
-### Skrip Program
+### Kode Program
 ```php
 <?php
 class pengguna//Mendeklarasikan class pengguna sebagai class induk
@@ -272,7 +272,7 @@ echo $Dsn1->getNama();//Menampilkan Nama dengan Memanggil metode get dari kelas 
 echo $Dsn1->getmatkul();//Memanggil metode get yang dipanggil dari kelas dosen dan menampilkan nilainya
 ?>
 ```
-### Output Program
+### Output
 ![output_1](/Dokumentasi/Output_3.png)
 
 ### 4. Polymorphism
@@ -344,7 +344,7 @@ echo "<br>";
 echo $Mhs->aksesFitur();
 ```
 Memanggil metode aksesFitur() pada objek Dsn1 dan Mhs.
-### Skrip Program
+### Kode Program
 ```php
 <?php
 class pengguna//Deklarasi class
@@ -471,7 +471,7 @@ echo "<br>";
 echo $Mhs->aksesFitur();
 ```
 Memanggil metode aksesFitur() untuk memanggil metode aksesFitur() pada objek Dsn1 dan Mhs
-### Skrip Program
+### Kode Program
 ```php
 <?php
 abstract class pengguna//Deklarasi class abstract
