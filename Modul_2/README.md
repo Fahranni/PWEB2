@@ -147,7 +147,7 @@ $Dosen1->NIP = "17829423231";
 $Dosen1->matkul = "Bahasa Inggris";
 echo $Dosen1->tampilkanDosen();
 ```
-Menngatur nilai dan Menampilkan informasi dosen
+Mengatur nilai dan Menampilkan informasi dosen
 #### Kode Program
 ```php
 <?php 
