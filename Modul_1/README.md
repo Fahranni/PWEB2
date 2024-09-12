@@ -54,7 +54,7 @@ $Mahasiswa1 = new Mahasiswa();//intansiasi objek
 $Mahasiswa1->nama = "AmelAdellia Fahrani";
 $Mahasiswa1->nim = "230102026";
 $Mahasiswa1->jurusan="Komputer dan Bisnis";
-echo $Mahasiswa1->tampilkanData();//Memanggil metode tampildata() dari objek mahasiswa1 dan menampilkan hasilnya menggunakan echo
+echo $Mahasiswa1->tampilkanData();//Memanggil metode tampildata() dari objek mahasiswa dan menampilkan hasilnya menggunakan echo
 ?>
 ```
 #### Output
